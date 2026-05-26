@@ -1,0 +1,278 @@
+\SetKwRepeat{Do}{do}{while}
+
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\renewcommand{\b}[1]{\ensuremath{\bm{\mathrm{#1}}}}
+\DeclareMathOperator{\poly}{poly}
+\DeclareMathOperator{\polylog}{polylog}
+
+\newcommand{\Ot}[1]{\ensuremath{\widetilde{O}(#1)}}
+\newcommand{\Tht}[1]{\ensuremath{\widetilde{\Theta}(#1)}}
+\newcommand{\Omt}[1]{\ensuremath{\widetilde{\Omega}(#1)}}
+\renewcommand{\O}[1]{\ensuremath{O\left(#1\right)}}
+\newcommand{\Th}[1]{\ensuremath{\Theta(#1)}}
+\newcommand{\Om}[1]{\ensuremath{\Omega(#1)}}
+
+\DeclareMathOperator{\var}{Var}
+\DeclareMathOperator{\elim}{elim}
+
+\renewcommand{\epsilon}[0]{\ensuremath{\varepsilon}}
+
+\newcommand{\Biggmid}[0]{\ensuremath{\,\Bigg\vert\,}}
+\newcommand{\Bigmid}[0]{\ensuremath{\,\Big\vert\,}}
+
+
+\let\originalleft\left
+\let\originalright\right
+\renewcommand{\left}{\mathopen{}\mathclose\bgroup\originalleft}
+\renewcommand{\right}{\aftergroup\egroup\originalright}
+
+% File requirements ===================================================
+
+\crefname{lemma}{Lemma}{Lemmas}
+\crefname{theorem}{Theorem}{Theorems}
+\crefname{property}{Property}{Properties}
+\crefname{claim}{Claim}{Claims}
+\crefname{result}{Result}{Results}
+\crefname{definition}{Definition}{Definitions}
+\crefname{observation}{Observation}{Observations}
+\crefname{proposition}{Proposition}{Propositions}
+\crefname{assumption}{Assumption}{Assumptions}
+\crefname{line}{Line}{Lines}
+\crefname{figure}{Figure}{Figures}
+\creflabelformat{property}{(#1)#2#3}
+\crefname{equation}{}{}
+\crefname{section}{Section}{Sections}
+\crefname{appendix}{Appendix}{Appendices}
+% \crefname{myalgctr}{Algorithm}{Algorithm}
+% \creflabelformat{myalgctr}{#1#2#3} 
+\crefname{algCounter}{Algorithm}{Algorithms}
+\Crefname{algCounter}{Algorithm}{Algorithms}
+
+
+% File requirements ===================================================
+\newtheorem{result}{Result}
+\newtheorem{question}{Question}
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{theorem}[lemma]{Theorem}
+\newtheorem{proposition}[lemma]{Proposition}
+\newtheorem{corollary}[lemma]{Corollary}
+\newtheorem{conj}[lemma]{Conjecture}
+\newtheorem{definition}[lemma]{Definition}
+\newtheorem{claim}[lemma]{Claim}
+\newtheorem{fact}[lemma]{Fact}
+\newtheorem{observation}[lemma]{Observation}
+\newtheorem{remark}{Remark}
+\newtheorem*{remark*}{Remark}
+\newtheorem{assumption}[lemma]{Assumption}
+\newtheorem{open}{Open Problem}
+
+\makeatletter
+\def\thm@space@setup{%
+  \thm@preskip= 0.2cm
+  \thm@postskip=\thm@preskip % or whatever, if you don't want them to be equal
+}
+\makeatother
+
+%\definecolor{mygreen}{RGB}{20,125,20}
+\definecolor{mygreen}{RGB}{20,155,20}
+\definecolor{myred}{RGB}{195,20,20}
+\definecolor{linkcolor}{RGB}{0,0,230}
+\definecolor{mylightgray}{RGB}{230,230,230}
+\definecolor{verylightgray}{RGB}{240,240,240}
+\definecolor{commentcolor}{RGB}{120,120,120}
+
+
+% algorithm2e styles and options ==============
+\setlength{\algomargin}{13pt}
+\newcommand\mycommfont[1]{\textcolor{commentcolor}{#1}}
+\SetCommentSty{mycommfont}
+
+
+
+%\newcommand{\smparagraph}[1]{\vspace{-0.3cm}\paragraph{#1}}
+%\newcommand{\smparagraph}[1]{\paragraph{#1}}
+\newcommand{\smparagraph}[1]{
+\par\addvspace{0.2cm}
+\noindent \textbf{#1}
+}
+
+
+
+\hypersetup{
+     colorlinks=true,
+     citecolor= mygreen,
+     linkcolor= myred,
+     urlcolor= mygreen
+}
+
+\newcommand{\etal}[0]{\textit{et al.}}
+
+\renewcommand{\mc}[1]{\ensuremath{\mathcal{#1}}}
+
+%%%%%%%% Algorithm counter
+\newcounter{myalgctr}
+%%%% Use \numberwithin{myalgctr}{section} to changes counter to section.#
+
+\newenvironment{tbox}{
+\par\addvspace{0.2cm}
+\begin{tcolorbox}[width=\textwidth,
+%                  frame hidden,
+%                  interior hidden,
+                  boxsep=2pt,
+                  left=1pt,
+                  right=1pt,
+                  top=4pt,
+                  boxrule=1pt,
+                  arc=0pt,
+                  colback=white,
+                  colframe=black
+                  ]%%
+}{
+\end{tcolorbox}
+%\vspace{-0.1cm}
+}
+
+\newenvironment{tboxh}{
+\par\addvspace{0.2cm}
+\begin{tcolorbox}[width=\textwidth,
+%                  frame hidden,
+%                  interior hidden,
+                  boxsep=2pt,
+                  left=1pt,
+                  right=1pt,
+                  top=4pt,
+                  boxrule=1pt,
+                  arc=0pt,
+                  colback=white,
+                  colframe=black,
+                  float=t
+                  ]%%
+}{
+\end{tcolorbox}
+%\vspace{-0.1cm}
+}
+
+\newenvironment{graytbox}{
+\par\addvspace{0.1cm}
+\begin{tcolorbox}[width=\textwidth,
+                  frame hidden,
+%                  interior hidden,
+                  boxsep=5pt,
+%                  enlarge top by=-0.1cm,
+%                  enlarge bottom by=-0.1cm,
+                  left=1pt,
+                  right=1pt,
+                  top=2pt,
+                  bottom=2pt,
+                  boxrule=1pt,
+                  arc=0pt,
+                  colback=mylightgray,
+                  colframe=black,
+                  breakable
+                  ]%%
+}{
+\end{tcolorbox}
+}
+
+\newcommand{\algcomment}[1]{{\color{gray} // #1 }}
+
+\newcommand{\tboxhrule}[0]{\vspace{0.1cm} \hrule \vspace{0.2cm}}
+
+\newenvironment{titledtbox}[1]{\begin{tbox}#1 \tboxhrule}{\end{tbox}}
+\newenvironment{titledtboxh}[1]{\begin{tboxh}#1 \tboxhrule}{\end{tboxh}}
+
+%\newenvironment{tboxalg}[1]{\refstepcounter{myalgctr}\begin{titledtbox}{\textbf{Algorithm \themyalgctr.} #1}}{\end{titledtbox}}
+
+\newenvironment{tboxalg}[2][]{\refstepcounter{myalgctr}\begin{titledtbox}{\textbf{Algorithm \themyalgctr}#1\textbf{.} #2}}{\end{titledtbox}}
+
+\newenvironment{tboxalgh}[2][]{\refstepcounter{myalgctr}\begin{titledtboxh}{\textbf{Algorithm \themyalgctr}#1\textbf{.} #2}}{\end{titledtboxh}}
+
+\newenvironment{tboxalg2e}[1]{
+\refstepcounter{myalgctr}
+	\begin{titledtbox}{\textbf{Algorithm \themyalgctr.} #1}
+	\vspace{-0.2cm}
+}
+{
+	\vspace{-0.3cm}
+	\end{titledtbox}
+}
+
+
+\newenvironment{quotebox}{
+\begin{tcolorbox}[width=\textwidth,
+                  frame hidden,
+                  interior hidden,
+                  boxsep=0pt,
+                  left=35pt,
+                  right=35pt,
+                  top=4pt,
+                  boxrule=1pt,
+                  arc=0pt,
+                  colback=white,
+                  colframe=black
+                  ]%%
+\itshape
+}{
+\end{tcolorbox}
+}
+
+\newenvironment{highlighttechnical}[0]{
+\vspace{0.1cm}
+\begin{tcolorbox}[width=\textwidth,
+%                  frame hidden,
+%                  interior hidden,
+                  boxsep=2pt,
+                  left=1pt,
+                  right=1pt,
+                  top=4pt,
+                  boxrule=0.8pt,
+                  arc=0pt,
+                  colback=mylightgray,
+                  colframe=black
+                  ]%%
+}{
+\end{tcolorbox}
+}
+
+\newenvironment{highlighttechnicalwhite}[0]{
+\vspace{0.1cm}
+\begin{tcolorbox}[width=\textwidth,
+%                  frame hidden,
+%                  interior hidden,
+                  boxsep=2pt,
+                  left=1pt,
+                  right=1pt,
+                  top=4pt,
+                  boxrule=0.8pt,
+                  arc=0pt,
+                  colback=white,
+                  colframe=black
+                  ]%%
+}{
+\end{tcolorbox}
+}
+
+\newcommand{\tboxtitle}[1]{
+\textbf{#1}\\[0.1cm]
+}
+
+% \newcommand{\restatedesc}[3]{
+% \par\addvspace{0.2cm}
+% \noindent\textbf{#1 {\normalfont (#2)}.} {\em #3}
+% \par\addvspace{0.2cm}
+% }
+
+% \newcommand{\restate}[2]{
+% \restatedesc{#1}{restated}{#2}
+% }
+
+\newenvironment{restate}[1]{\textbf{#1} (restated)\textbf{.}\begin{itshape}}{\end{itshape}\vspace{0.3cm}}
+
+\newcommand{\restatethm}[2]{\noindent \textbf{Theorem~#1} (restated) \textbf{.} {\em #2}}
+
+\newcommand{\restateclaim}[2]{\noindent \textbf{Claim~#1} (restated) \textbf{.} {\em #2}}
+
+\newcommand{\restatelem}[2]{\noindent \textbf{Lemma~#1} (restated) \textbf{.} {\em #2}}
+
+

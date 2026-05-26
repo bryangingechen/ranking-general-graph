@@ -1,0 +1,86 @@
+{
+  "project_dir": "/home/ngkan/Repositories/MiniFormalizer/output_test/GraphRanking",
+  "manifest_path": "/home/ngkan/Repositories/MiniFormalizer/output_test/GraphRanking/manifest.json",
+  "items": [
+    {
+      "label": "Ranking Algorithm",
+      "lean_name": "Ranking_Algorithm",
+      "file": "",
+      "status": "pending",
+      "attempts": 0,
+      "last_error": ""
+    },
+    {
+      "label": "Proposition 1.1",
+      "lean_name": "prop_aug3_path_bound",
+      "file": "",
+      "status": "sorry_ok",
+      "attempts": 0,
+      "last_error": ""
+    },
+    {
+      "label": "Proposition 1.2",
+      "lean_name": "prop_bionomila_minimize",
+      "file": "",
+      "status": "sorry_ok",
+      "attempts": 0,
+      "last_error": ""
+    },
+    {
+      "label": "Proposition 1.3",
+      "lean_name": "prop_entropy_approximation",
+      "file": "",
+      "status": "sorry_ok",
+      "attempts": 0,
+      "last_error": ""
+    },
+    {
+      "label": "Definition 2.1",
+      "lean_name": "def_ltap",
+      "file": "",
+      "status": "pending",
+      "attempts": 0,
+      "last_error": ""
+    },
+    {
+      "label": "Lemma 2.2",
+      "lean_name": "lem_kltap_all_perms",
+      "file": "",
+      "status": "pending",
+      "attempts": 0,
+      "last_error": ""
+    },
+    {
+      "label": "Claim 2.3",
+      "lean_name": "clm_kltap_bound",
+      "file": "",
+      "status": "pending",
+      "attempts": 0,
+      "last_error": ""
+    },
+    {
+      "label": "Claim 2.4",
+      "lean_name": "lem_prob_bound",
+      "file": "",
+      "status": "pending",
+      "attempts": 0,
+      "last_error": ""
+    },
+    {
+      "label": "Lemma 2.5",
+      "lean_name": "lem_upperbound_kwis",
+      "file": "",
+      "status": "pending",
+      "attempts": 0,
+      "last_error": ""
+    },
+    {
+      "label": "Theorem 2.6",
+      "lean_name": "thm_final",
+      "file": "",
+      "status": "pending",
+      "attempts": 0,
+      "last_error": ""
+    }
+  ]
+}

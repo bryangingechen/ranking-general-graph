@@ -1,0 +1,38 @@
+\renewcommand{\epsilon}{\varepsilon}
+\newcommand{\stackeq}[2]{\ensuremath{\stackrel{\text{#1}}{#2}}}
+
+\DeclareMathOperator{\E}{\ensuremath{\normalfont \textbf{E}}}
+
+\newcommand{\unifzeroone}[0]{\ensuremath{\mathsf{Unif}[0, 1]}}
+
+
+\newcommand{\mdcomment}[1]{{\textcolor{blue}{[\textbf{Mahsa:} #1]}}}
+\newcommand{\mscomment}[1]{{\textcolor{orange}{[\textbf{Mohammad:} #1]}}}
+
+\newcommand{\mrcomment}[1]{{\textcolor{red}{[\textbf{Roghani:} #1]}}}
+
+
+\newcommand{\rnk}[0]{\textsc{Ranking}}
+
+\newcommand{\hiddencomment}[1]{}
+
+\newcommand{\mc}[1]{\ensuremath{\mathcal{#1}}}
+
+\newcommand{\cev}[1]{\reflectbox{\ensuremath{\vec{\reflectbox{\ensuremath{#1}}}}}}
+
+\newcounter{protocolcounter}
+\newenvironment{protocol}{
+\refstepcounter{protocolcounter}
+\begin{whitetbox}
+\textbf{Algorithm \theprotocolcounter:}%
+}{\end{whitetbox}} 
+\crefname{protocolcounter}{Algorithm}{Algorithms}
+\newcommand{\unmapr}[0]{\ensuremath{\delta}}
+\newcommand{\opt}[0]{\text{OPT}}
+\newcommand{\MM}[0]{{\textsf{MWM}}}
+\newcommand{\weight}[0]{{\sf{W}}}
+\newcommand{\adj}{\ensuremath{N}\xspace}
+\newcommand{\ranking}[0]{\textsc{Ranking}}
+\newcommand{\wis}[0]{\textsc{WIS}}
+
+\newcommand{\rank}[0]{\text{rank}}

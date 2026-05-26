@@ -1,0 +1,50 @@
+\vspace{-1cm}
+\section{Introduction}
+In this work, we study a randomized greedy matching algorithm called {\em \rnk{}} for general graphs. This algorithm was first introduced in the seminal work of Karp, Vazirani, and Vazirani~\cite{karp1990optimal} in 1990 for online bipartite matching with one-sided vertex arrivals and was subsequently extended to general graphs~\cite{DBLP:conf/focs/GoelT12} and bipartite graphs~\cite{DBLP:conf/stoc/MahdianY11} with random vertex arrivals. The algorithm belongs to a class of matching algorithms called vertex-iterative (VI) randomized greedy matching algorithms. These algorithms first draw a permutation $\pi$ over the vertices uniformly at random. They then iterate over the vertices in the order of $\pi$, matching each vertex to one of its available neighbors (if any) according to a specific neighbor selection policy. In \rnk{} for general graphs, this policy selects the first unmatched neighbor in the order given by the same permutation $\pi$ used for the initial iteration.
+
+
+Besides their simplicity and applicability to settings such as online matching, a significance of VI randomized greedy matching algorithms is that they outperform deterministic greedy algorithms and the randomized edge-iterative greedy algorithm\footnote{The algorithm that draws a permutation $\pi$ over the edges uniformly at random and greedily includes the edges according to $\pi$.}~\cite{DBLP:journals/rsa/DyerF91}, achieving an approximation ratio larger than 0.5. The approximation ratio of vertex-iterative randomized greedy matching algorithms is well-understood for bipartite graphs, with the best approximation ratio being between 0.696~\cite{DBLP:conf/stoc/MahdianY11} and 0.75~\cite{DBLP:conf/focs/GoelT12}. However, despite a long line of work~\cite{DBLP:journals/rsa/AronsonDFS95, poloczek2012randomized, chan2014ranking, DBLP:conf/stoc/TangW020, DBLP:conf/focs/GoelT12,0.546ranking}, our understanding of their approximation ratio for general graphs remains limited, with the best-known lower and upper bounds being 0.5469~\cite{0.546ranking} and 0.75~\cite{DBLP:conf/focs/GoelT12}. Aronson, Dyer, Frieze, and Suen~\cite{DBLP:journals/rsa/AronsonDFS95} were the first to show that VI randomized greedy algorithms surpass 0.5 for general graphs by designing a VI algorithm called the modified randomized greedy (MRG)\footnote{In this algorithm, the neighbor selection policy selects one of the unmatched neighbors uniformly at random.} and proving a lower bound of $0.5+1/400,000$ for its approximation ratio. This approximation ratio was later improved to $0.5+1/256$~\cite{poloczek2012randomized}. Both of these papers involve quite complicated combinatorial analyses. Later, in \cite{0.546ranking} and \cite{DBLP:conf/stoc/TangW020}, authors proved 0.5469 and 0.531 approximation guarantees for \rnk{} and MRG, respectively, using factor-revealing linear programs.
+
+
+In this work, we take a fresh look at the \rnk{} algorithm for general graphs and provide a significantly simpler combinatorial analysis demonstrating that it achieves an approximation ratio of at least 0.505. Our approach is not only more straightforward and intuitive compared to all previous work, but our approximation guarantee also surpasses existing guarantees obtained without solving factor-revealing linear programs.
+
+
+ 
+
+
+\paragraph{Our Techniques.} Our proof idea starts with a few simple, well-known observations. Let $\opt$ be the maximum matching of the input graph, which we can assume is a perfect matching w.l.o.g.~\cite{poloczek2012randomized}, and let $R$ be the output of \rnk{}. If $R$ has an approximation ratio smaller than $1/2+c$ for a constant $c>0$, then $R\oplus \opt$ contains at least $(1/2-3c)n/2$ augmenting paths of length three. Furthermore, since $R$ is a maximal matching, the endpoints of these augmenting paths are unmatched in $R$, and they form an independent set. Following these observations, we define a graph structure called a $k$-{\em wasteful independent set} ($k$-\wis{}) in \Cref{def:ltap}. Given a subset of $2k$ vertices, they form a $k$-\wis{} if they are the $2k$ endpoints of $k$ augmenting paths of length three in $R\oplus \opt$. Our analysis then involves a double counting of these $k$-\wis{} for $k=(1/2-3c)n/2$. We provide combinatorial lower and upper bounds for the expected number of $k$-\wis{} in the output of \rnk{} (respectively in \Cref{lem:kltap-all-perms} and \Cref{lem:upperbound-kwis}). We then show that for $c\leq 0.005$, our bounds reach a contradiction, hence proving that \rnk{} in expectation has an approximation ratio of at least $0.505$.
+
+\paragraph{Further Related Work.} After its introduction in the seminal work of Karp, Vazirani, and Vazirani~\cite{karp1990optimal}, \rnk{} and its extensions have been studied extensively in various settings such as online matching with vertex arrivals \cite{DBLP:conf/sosa/EdenFFS21, DBLP:conf/soda/GoelM08, DBLP:journals/sigact/BirnbaumM08, DBLP:conf/soda/DevanurJK13, DBLP:journals/jacm/HuangKTWZZ20, DBLP:conf/soda/0002PTTWZ19, DBLP:conf/focs/0002T0020,0.546ranking}, oblivious matching~\cite{DBLP:conf/stoc/MahdianY11, DBLP:conf/stoc/TangW020, chan2014ranking}, and stochastic matching with query commits~\cite{DBLP:conf/soda/GamlathKS19, DBLP:conf/soda/Derakhshan023}. See the excellent survey  on online matching~\cite{huang2024online} for a more detailed discussion of related work. 
+
+
+
+
+\subsection{Preliminaries}
+
+\paragraph{Notation and Definitions.} Throughout the paper, we denote the input graph as $G = (V, E)$, where $|V| = n$. A maximal matching in $G$ is a matching $M$ such that there is no edge $e \in E \setminus M$ for which $M \cup e$ is also a matching. A maximum matching in $G$ is a matching with the maximum number of edges, denoted by $\mu(G)$. Let \opt{} denote a fixed maximum matching of $G$. As discussed in \cite{DBLP:conf/focs/GoelT12, poloczek2012randomized} (see Corollary 2 of \cite{poloczek2012randomized}), one can assume that $G$ contains a perfect matching when analyzing the ratio of the \rnk{} algorithm.
+
+\paragraph{The \rnk{} Algorithm.} We first draw a permutation $\pi$ over the vertices uniformly at random. Then, we iterate over the vertices in order of $\pi$, and match each vertex to its first unmatched neighbor, again in the order of $\pi$, if any. We use $\pi(v)$ to denote the position of vertex $v$ in the permutation selected by \rnk{}.
+
+
+\paragraph{Augmenting Paths.} An augmenting path $P$ for a matching $M$ in a graph $G$ is a path that alternates between edges of \opt{} and $M$ such that the path starts and ends with vertices that are unmatched in $M$.  The length of the augmenting path is the number of edges it contains. The presence of an augmenting path indicates that the matching $M$ is not maximum. Furthermore, when matching $M$ is far from being maximum, say a 1/2-approximation, there exist many short augmenting paths.
+
+
+\begin{proposition}[{\cite[Lemma~1]{KonradMM12}}]\label{prop:aug3-path-bound}
+Let $\alpha \geq 0$ and $M$ be a maximal matching of $G$ such that $|M| \leq (1/2 + \alpha) \cdot \mu(G)$. Then, at least $(1/2 - 3\alpha)\cdot \mu(G)$ edges of $M$ are in disjoint, length-three augmenting paths.
+\end{proposition}
+
+
+
+
+
+\paragraph{Combinatorial Tools.} We use the following two well-known bounds on the binomial coefficient.
+
+
+\begin{proposition}[{\cite[Chapter~3]{marshall1979inequalities}}]\label{prop:bionomila-minimize}
+Let $a_1, a_2, \ldots, a_n$ be $n$ positive integers such that $\sum_{i = 1}^n a_i = m$. Then, for a positive integer $x$,  $\sum_{i=1}^n {a_i \choose x}$ is minimized when $\{a_1,\ldots, a_n\} = \{\lfloor m/n \rfloor , \lceil m/n \rceil\}$.
+\end{proposition}
+
+
+\begin{proposition}[{\cite[Chapter~11]{thomas2006elements}}]\label{prop:entropy-approximation}
+Let $n$ and $\alpha n$ be two positive integers and $1/n \leq \alpha \leq 1/2$. Then, we have ${n \choose \alpha n} \leq 2^{nH(\alpha)}$ where $H(\alpha) = -\alpha \cdot \log_2(\alpha) - (1-\alpha) \cdot \log_2 (1 - \alpha)$.
+\end{proposition}

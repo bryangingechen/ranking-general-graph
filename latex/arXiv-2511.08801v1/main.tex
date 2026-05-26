@@ -1,0 +1,114 @@
+\documentclass[letterpaper,11pt]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsmath, amsthm, amssymb, thm-restate}
+%\usepackage{algpseudocode,algorithm}
+\usepackage{algorithmicx}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage[vlined,linesnumbered]{algorithm2e}
+\usepackage{setspace}
+\usepackage{mathtools}
+% \usepackage[style=alphabetic,natbib=true]{biblatex}
+\usepackage[numbers]{natbib}
+\usepackage{comment} % enables comment environment
+%\usepackage[most]{tcolorbox} 
+\usepackage{tcolorbox} 
+\usepackage{xfrac}
+\usepackage{hyperref}
+\usepackage{multirow}
+\usepackage{caption}
+\usepackage{bm}
+\usepackage{newfloat}
+\usepackage{enumitem}
+\usepackage{dblfloatfix} 
+\usepackage{wrapfig}
+\usepackage{dsfont}
+\usepackage{mdframed}
+\usepackage{multirow}
+\usepackage{tikz}
+% \usepackage[subtle,mathspacing=small{savetrees}
+
+% \usepackage{emoji}
+
+\usepackage{fancyhdr}
+% \usepackage[noabbrev,nameinlink]{cleveref}
+\usepackage[noabbrev,nameinlink]{cleveref}
+
+%\usepackage{ltexpprt}
+\parskip=5pt
+
+
+\usepackage[margin=1in]{geometry}
+
+\allowdisplaybreaks
+
+\definecolor{mygreen}{RGB}{10,110,230}
+\definecolor{myred}{RGB}{10,110,230}
+
+\hypersetup{
+     colorlinks=true,
+     citecolor= mygreen,
+     linkcolor= myred
+}
+
+\input{macro.tex}
+\input{utils.tex}
+
+\makeatletter
+\renewcommand{\paragraph}{%
+  \@startsection{paragraph}{4}%
+  {\z@}{10pt}{-1em}%
+  {\normalfont\normalsize\bfseries}%
+}
+\makeatother
+
+\makeatletter
+% Remove right hand margin in algorithm
+\patchcmd{\@algocf@start}% <cmd>
+  {-1.5em}% <search>
+  {0pt}% <replace>
+  {}{}% <success><failure>
+\makeatother
+
+
+\title{A Simple Analysis of Ranking in General Graphs}
+
+ \author{
+ Mahsa Derakhshan \\ {\em Northeastern University} \and 
+ Mohammad Roghani  \\ {\em Stanford University} \and
+ Mohammad Saneian  \\ {\em Northeastern University} \and
+ Tao Yu \\ {\em Northeastern University}
+ }
+\date{}
+
+\begin{document}
+\maketitle
+
+
+\setcounter{page}{1}
+
+\input{abstract}
+
+\vspace{30pt}
+
+% \newpage
+% \tableofcontents
+
+% {
+% \hypersetup{hidelinks}
+% \vspace{1cm}
+% \renewcommand{\baselinestretch}{0.1}
+% \setcounter{tocdepth}{2}
+% \tableofcontents{}
+% \thispagestyle{empty}
+% \clearpage
+% }
+
+% \clearpage
+\input{intro.tex}
+\input{proofs.tex}
+
+
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}
